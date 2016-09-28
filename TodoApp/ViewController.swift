@@ -77,6 +77,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func textFieldDidEndEditing(_ textField: UITextField) {
         //Add new item
         saveName(name: textField.text!)
+        textField.text = ""
     }
     
     func saveName(name: String) {
