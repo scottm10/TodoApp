@@ -13,14 +13,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var itemTextField: UITextField!
-    lazy var context = CoreDataStack().getContext();
-    var items:[NSManagedObject] = [];
+    lazy var context = CoreDataStack().getContext()
+    var items:[NSManagedObject] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        itemTextField.delegate = self;
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        itemTextField.delegate = self
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Item")
         
@@ -28,10 +32,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let results =
                 try context.fetch(fetchRequest)
             items = results as! [NSManagedObject]
+            tableView.reloadData()
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,7 +44,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func numberOfSectionsInTableView(in: UITableView) -> Int {
-        return 1;
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -61,6 +65,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0.1
     }
+    
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Hide the keyboard.
@@ -92,6 +98,34 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         tableView.reloadData()
     }
-
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            deleteItem(at: indexPath)
+            tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+        }
+    }
+    
+    func deleteItem(at: IndexPath) {
+        let toDelete = items.remove(at: at.row)
+        context.delete(toDelete)
+        do {
+            try context.save()
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get Cell Item
+        let indexPath = tableView.indexPathForSelectedRow;
+        print("You selected cell #\(indexPath?.row)!")
+        let currentItem = items[(indexPath?.row)!];
+        
+        let viewController = segue.destination as! EditViewController
+        
+        viewController.passedValue = currentItem as! Item
+    }
+    
 }
 

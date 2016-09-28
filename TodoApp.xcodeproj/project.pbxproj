@@ -18,6 +18,7 @@
 		7E3B4E6F1D9B845D001351B1 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3B4E6D1D9B845D001351B1 /* Item+CoreDataClass.swift */; };
 		7E3B4E701D9B845D001351B1 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3B4E6E1D9B845D001351B1 /* Item+CoreDataProperties.swift */; };
 		7E3B4E721D9B8602001351B1 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3B4E711D9B8602001351B1 /* CoreDataStack.swift */; };
+		7E3B4E741D9C15B7001351B1 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3B4E731D9C15B7001351B1 /* EditViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		7E3B4E6D1D9B845D001351B1 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7E3B4E6E1D9B845D001351B1 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7E3B4E711D9B8602001351B1 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		7E3B4E731D9C15B7001351B1 /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			children = (
 				7E3B4E2A1D9B7B04001351B1 /* AppDelegate.swift */,
 				7E3B4E2C1D9B7B04001351B1 /* ViewController.swift */,
+				7E3B4E731D9C15B7001351B1 /* EditViewController.swift */,
 				7E3B4E711D9B8602001351B1 /* CoreDataStack.swift */,
 				7E3B4E5F1D9B7D18001351B1 /* Model */,
 				7E3B4E2E1D9B7B04001351B1 /* Main.storyboard */,
@@ -288,6 +291,7 @@
 				7E3B4E721D9B8602001351B1 /* CoreDataStack.swift in Sources */,
 				7E3B4E6A1D9B83F4001351B1 /* TodoApp.xcdatamodeld in Sources */,
 				7E3B4E2B1D9B7B04001351B1 /* AppDelegate.swift in Sources */,
+				7E3B4E741D9C15B7001351B1 /* EditViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
